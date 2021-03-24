@@ -8,7 +8,7 @@ var uPMatrix;
 var vertexPositionBuffer;
 var vertexColorBuffer;
 
-function MatrixMul(inA, inB)
+function MatrixMul(inB, inA)
 {
   out = [];
   for (var rows = 0;  rows< 4; rows++){
@@ -86,7 +86,7 @@ function startGL()
     return o;
 };
 
-  var High = 3
+  var High = 1
   var A = [0,0,0];
   var A2 = [0,High,0];
   var B = [2,0,0];
