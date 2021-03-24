@@ -74,19 +74,20 @@ function startGL()
   //Opis sceny 3D, położenie punktów w przestrzeni 3D w formacie X,Y,Z 
   
   function connectArrays(){
+    var scale=3; //tutaj można powiększyć labirynt
     var args = arguments;
     let o=[]
     for(var i=0; i<args.length; i++){
         let temp = args[i];
         for(var j = 0;  j< temp.length; j++){
-            o.push(temp[j]*2);
+            o.push(temp[j]*scale);
             
         }
     }
     return o;
 };
 
-  var High = 1
+  var High = 2
   var A = [0,0,0];
   var A2 = [0,High,0];
   var B = [2,0,0];
@@ -293,9 +294,9 @@ function startGL()
 var angleZ = 0.0;
 var angleY = 0.0;
 var angleX = 0.0;
-var movX = -15.0;
+var movX = -22.0;
 var movY = -3.0;
-var movZ = 0.0;
+var movZ = -12.0;
 var tz = -30.0;
 
 function Tick()
