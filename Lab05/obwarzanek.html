@@ -132,43 +132,31 @@ function startGL()
   let vertexPosition = []; //3 punkty po 3 składowe - X1,Y1,Z1, X2,Y2,Z2, X3,Y3,Z3 - 1 trójkąt
   let stepElevation = 90/6;
   let stepAngle = 360/12;
+  let stepAngle2 = 90/6;
   let radius = 2.0;
-  let bigRadius = 10.0;
-  //for(let elevation=-90; elevation< 90; elevation+= stepElevation)
-  //{
-    let radiusXZ = radius;//*Math.cos(elevation*Math.PI/180);
-    let radiusY  = radius;//*Math.sin(elevation*Math.PI/180);
-    
-    let radiusXZ2 = radius;//*Math.cos((elevation+stepElevation)*Math.PI/180);
-    let radiusY2  = radius;//*Math.sin((elevation+stepElevation)*Math.PI/180);
+  let bigRadius = 6.0;
+  
 
-    for(let angle2 = 0; angle2 < 360; angle2+= stepAngle)
+    for(let angle2 = 0; angle2 < 360; angle2+= stepAngle2)
     {    
-    //    let X = (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.cos(angle*Math.PI/180);
-    //    let Y = (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.sin(angle*Math.PI/180);
-    //    let Z = radius*Math.sin(angle2*Math.PI/180);
-
-      //  let X2 = (bigRadius+radius*Math.cos(angle2+stepAngle*Math.PI/180))*Math.cos(angle*Math.PI/180);
-      //  let Y2 = (bigRadius+radius*Math.cos(angle2+stepAngle*Math.PI/180))*Math.sin(angle*Math.PI/180);
-     //   let Z2 = radius*Math.sin(angle2+stepAngle*Math.PI/180);
-
+   
       for(let angle = 0; angle < 360; angle+= stepAngle)
     {
-      let px1 = (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.cos(angle*Math.PI/180);  //0.0;
-      let py1 = (bigRadius+radius*Math.cos(angle2+stepAngle*Math.PI/180))*Math.sin(angle*Math.PI/180)*Math.sin(angle*Math.PI/180);
-      let pz1 = radius*Math.sin(angle2*Math.PI/180)*Math.cos(angle*Math.PI/180);
+      let px1 = (bigRadius+radius*Math.cos(angle*Math.PI/180))*Math.cos(angle2*Math.PI/180);  //0.0;
+      let py1 = (bigRadius+radius*Math.cos(angle*Math.PI/180))*Math.sin(angle2*Math.PI/180);
+      let pz1 = radius*Math.sin((angle)*Math.PI/180);
       
-      let px2 = (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.cos(angle+stepAngle*Math.PI/180);  // 0.0;
-      let py2 = (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.sin(angle+stepAngle*Math.PI/180)*Math.sin((angle+stepAngle)*Math.PI/180);
-      let pz2 = radius*Math.sin(angle2*Math.PI/180)*Math.cos((angle+stepAngle)*Math.PI/180);
+      let px2 = (bigRadius+radius*Math.cos((angle+stepAngle)*Math.PI/180))*Math.cos(angle2*Math.PI/180);  // 0.0;
+      let py2 = (bigRadius+radius*Math.cos((angle+stepAngle)*Math.PI/180))*Math.sin(angle2*Math.PI/180);
+      let pz2 = radius*Math.sin((angle+stepAngle)*Math.PI/180);
       
-      let px3 = (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.cos(angle*Math.PI/180);  //  1.0;
-      let py3 = (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.sin(angle*Math.PI/180)*Math.sin(angle*Math.PI/180);
-      let pz3 = radius*Math.sin(angle2*Math.PI/180)*Math.cos(angle*Math.PI/180);
+      let px3 = (bigRadius+radius*Math.cos(angle*Math.PI/180))*Math.cos((angle2+stepAngle2)*Math.PI/180);  //0.0;
+      let py3 = (bigRadius+radius*Math.cos(angle*Math.PI/180))*Math.sin((angle2+stepAngle2)*Math.PI/180);
+      let pz3 = radius*Math.sin(angle*Math.PI/180);
       
-      let px4 =  (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.cos(angle+stepAngle*Math.PI/180);  //1.0;
-      let py4 =  (bigRadius+radius*Math.cos(angle2*Math.PI/180))*Math.sin(angle+stepAngle*Math.PI/180)*Math.sin((angle+stepAngle)*Math.PI/180);
-      let pz4 =  radius*Math.sin(angle2*Math.PI/180)*Math.cos((angle+stepAngle)*Math.PI/180);
+      let px4 = (bigRadius+radius*Math.cos((angle+stepAngle)*Math.PI/180))*Math.cos((angle2+stepAngle2)*Math.PI/180);  // 0.0;
+      let py4 = (bigRadius+radius*Math.cos((angle+stepAngle)*Math.PI/180))*Math.sin((angle2+stepAngle2)*Math.PI/180);
+      let pz4 = radius*Math.sin((angle+stepAngle)*Math.PI/180);
       
       vertexPosition.push(...createRect2(px1,py1,pz1,px2,py2,pz2,px3,py3,pz3,px4,py4,pz4)); // Ściana XZ
     }
@@ -183,7 +171,7 @@ function startGL()
   //Opis sceny 3D, kolor każdego z wierzchołków
   let vertexColor = []; //3 punkty po 3 składowe - R1,G1,B1, R2,G2,B2, R3,G3,B3 - 1 trójkąt
   
-  for(let angle2 = 0; angle2 < 360; angle2+= stepAngle)
+  for(let angle2 = 0; angle2 < 360; angle2+= stepAngle2)
     { 
     for(let angle = 0; angle < 360; angle+= stepAngle)
     {
@@ -199,7 +187,7 @@ function startGL()
   
   let vertexCoords = []; //3 punkty po 2 składowe - U1,V1, U2,V2, U3,V3 - 1 trójkąt
   
-  for(let angle2 = 0; angle2 < 360; angle2+= stepAngle)
+  for(let angle2 = 0; angle2 < 360; angle2+= stepAngle2)
     { 
     for(let angle = 0; angle < 360; angle+= stepAngle)
     {
